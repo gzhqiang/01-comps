@@ -42,7 +42,7 @@
 import KForm from '@/components/form/KForm'
 import KFormItem from '@/components/form/KFormItem'
 import KInput from '@/components/form/KInput'
-import Notice from '@/components/Notice'
+// import Notice from '@/components/Notice'
 import index from '@/components/communication/index'
 
 export default {
@@ -77,11 +77,16 @@ export default {
     // }
     handleLogin() {
       this.$refs.loginForm.validated(valid => {
-        this.$create(Notice, {
+        // this.$create(Notice, {
+        //   title: '社会你杨哥喊你来搬砖',
+        //   message: '提示信息',
+        //   duration: 1000
+        // }).show()
+        this.$notice({
           title: '社会你杨哥喊你来搬砖',
           message: '提示信息',
           duration: 1000
-        }).show()
+        })
         // this.$create(Notice, {
         //   title: '社会你杨哥喊你来搬砖',
         //   message: '提示信息',

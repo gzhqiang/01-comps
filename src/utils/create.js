@@ -1,37 +1,37 @@
 import Vue from 'vue'
-import Notice from '../components/Notice'
+// import Notice from '../components/Notice'
 
-const plugin = {}
+// const plugin = {}
 
-function removeDom(e) {
-  // e.target.parentNode && e.target.parentNode.removeChild(e.target)
-}
+// function removeDom(e) {
+//   // e.target.parentNode && e.target.parentNode.removeChild(e.target)
+// }
 
-plugin.install = Vue => {
-  //
-  const NoticeConstrutor = Vue.extend(Notice)
+// plugin.install = Vue => {
+//   //
+//   const NoticeConstrutor = Vue.extend(Notice)
 
-  NoticeConstrutor.prototype.close = function() {
-    this.isShow = false
-    // this.$el.addEventListener('transitionend', removeDom)
-  }
+//   NoticeConstrutor.prototype.close = function() {
+//     this.isShow = false
+//     // this.$el.addEventListener('transitionend', removeDom)
+//   }
 
-  Vue.prototype.$create = (options = {}) => {
-    const notice = new NoticeConstrutor()
-    notice.$mount(document.createElement('div'))
-    document.body.appendChild(notice.$el)
-    console.log('options', options)
-    notice.title = options.title
-    notice.message = options.message
-    const duration = options.duration || 2000
-    setTimeout(() => {
-      // notice.isShow = false
-      notice.close()
-      // document.body.removeChild(notice.$el)
-      // notice.$destroy()
-    }, duration)
-  }
-}
+//   Vue.prototype.$create = (options = {}) => {
+//     const notice = new NoticeConstrutor()
+//     notice.$mount(document.createElement('div'))
+//     document.body.appendChild(notice.$el)
+//     console.log('options', options)
+//     notice.title = options.title
+//     notice.message = options.message
+//     const duration = options.duration || 2000
+//     setTimeout(() => {
+//       // notice.isShow = false
+//       notice.close()
+//       // document.body.removeChild(notice.$el)
+//       // notice.$destroy()
+//     }, duration)
+//   }
+// }
 
 function create(Component, options) {
   const ComponentConstrutor = Vue.extend(Component)

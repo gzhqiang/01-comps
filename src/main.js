@@ -3,11 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 // import Create from './utils/create'
-import create from './utils/create'
+// import create from './utils/create'
+import Notive from './components/notice'
 
 Vue.config.productionTip = false
-Vue.prototype.$create = create
-// Vue.use(Create)
+// Vue.prototype.$create = create
+Vue.use(Notive)
 
 new Vue({
   router,

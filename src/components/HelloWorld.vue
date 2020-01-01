@@ -2,6 +2,7 @@
   <div class="hello">
     <!-- 使用input -->
     <!-- v-model使用在自定义组件上 -->
+    <index></index>
     <k-form :model="model" :rules="rules" ref="loginForm">
       <k-form-item label="用户名" prop="username">
         <!-- 两种用法 1.默认插槽-->
@@ -42,6 +43,7 @@ import KForm from '@/components/form/KForm'
 import KFormItem from '@/components/form/KFormItem'
 import KInput from '@/components/form/KInput'
 import Notice from '@/components/Notice'
+import index from '@/components/communication/index'
 
 export default {
   name: 'HelloWorld',
@@ -55,7 +57,9 @@ export default {
         password: ''
       },
       rules: {
-        username: [{ required: true, message: '请输入用户名' }],
+        username: [
+          { required: true, message: '请输入4-10位', pattern: /^d[a-z]{4,10}$/ }
+        ],
         password: [{ required: true, message: '请输入密码' }]
       }
     }
@@ -63,7 +67,8 @@ export default {
   components: {
     KInput,
     KFormItem,
-    KForm
+    KForm,
+    index
   },
   methods: {
     // handleInput(val) {

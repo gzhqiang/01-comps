@@ -77,11 +77,11 @@ export default {
     // }
     handleLogin() {
       this.$refs.loginForm.validated(valid => {
-        this.$create({
+        this.$create(Notice, {
           title: '社会你杨哥喊你来搬砖',
           message: '提示信息',
           duration: 1000
-        })
+        }).show()
         // this.$create(Notice, {
         //   title: '社会你杨哥喊你来搬砖',
         //   message: '提示信息',

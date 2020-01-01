@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import Notice from '../components/Notice'
 
 const plugin = {}
@@ -24,7 +25,6 @@ plugin.install = Vue => {
     notice.message = options.message
     const duration = options.duration || 2000
     setTimeout(() => {
-      console.log(111)
       // notice.isShow = false
       notice.close()
       // document.body.removeChild(notice.$el)
@@ -33,20 +33,17 @@ plugin.install = Vue => {
   }
 }
 
-// function create(Component, props) {
-//   const vm = new Vue({
-//     render(h) {
-//       return h(Component, { props })
-//     }
-//   }).$mount()
-
-//   document.body.appendChild(vm.$el)
-//   // 给组件添加销毁方法
-//   const comp = vm.$children[0]
-//   comp.remove = () => {
-//     document.body.removeChild(vm.$el)
-//     vm.$destroy()
-//   }
-//   return comp
-// }
-export default plugin
+function create(Component, options) {
+  const ComponentConstrutor = Vue.extend(Component)
+  const comp = new ComponentConstrutor({
+    propsData: { ...options }
+  })
+  comp.$mount(document.createElement('div'))
+  document.body.appendChild(comp.$el)
+  comp.remove = () => {
+    document.body.removeChild(comp.$el)
+    comp.$destroy()
+  }
+  return comp
+}
+export default create

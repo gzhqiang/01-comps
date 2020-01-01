@@ -25,12 +25,13 @@ export default {
   },
   data() {
     return {
-      isShow: true
+      isShow: false
     }
   },
   methods: {
     show() {
       this.isShow = true
+      console.log(this.duration, 'duration')
       setTimeout(this.hide, this.duration)
     },
     hide() {

@@ -28,6 +28,7 @@ export default {
   watch: {},
   methods: {
     validated(cb) {
+      console.log(this.$children)
       const tasks = this.$children
         .filter(item => item.prop)
         .map(item => item.validate())

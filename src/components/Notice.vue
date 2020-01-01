@@ -1,8 +1,10 @@
 <template>
-  <div class="box" v-if="isShow">
-    <h3>{{ title }}</h3>
-    <p class="box-content">{{ message }}</p>
-  </div>
+  <transition name="fade">
+    <div class="box" v-if="isShow">
+      <h3>{{ title }}</h3>
+      <p class="box-content">{{ message }}</p>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -23,7 +25,7 @@ export default {
   },
   data() {
     return {
-      isShow: false
+      isShow: true
     }
   },
   methods: {
@@ -51,6 +53,7 @@ export default {
   background-color: #fff;
   border: grey 3px solid;
   box-sizing: border-box;
+  transition: all 1s;
 }
 .box-content {
   width: 200px;
@@ -60,5 +63,15 @@ export default {
   background: #fff;
   border-radius: 3px;
   margin-bottom: 8px;
+}
+
+.fade-enter-active,
+.fade-leave-action {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

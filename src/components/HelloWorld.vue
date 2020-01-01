@@ -72,11 +72,16 @@ export default {
     // }
     handleLogin() {
       this.$refs.loginForm.validated(valid => {
-        this.$create(Notice, {
+        this.$create({
           title: '社会你杨哥喊你来搬砖',
           message: '提示信息',
           duration: 1000
-        }).show()
+        })
+        // this.$create(Notice, {
+        //   title: '社会你杨哥喊你来搬砖',
+        //   message: '提示信息',
+        //   duration: 1000
+        // }).show()
         // if (valid) {
         //   alert('登陆成功')
         // } else {

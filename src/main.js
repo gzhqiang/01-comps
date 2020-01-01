@@ -2,10 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import create from './utils/create'
+import Create from './utils/create'
 
 Vue.config.productionTip = false
-Vue.prototype.$create = create
+// Vue.prototype.$create = create
+Vue.use(Create)
 
 new Vue({
   router,

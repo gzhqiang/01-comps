@@ -8,9 +8,12 @@
 </template>
 
 <script>
+import emitters from '@/mixins/emitter'
+
 export default {
   // 避免$attrs属性绑定到根元素
   inheritAttrs: false,
+  mixins: [emitters],
   props: {
     value: {
       type: String,
@@ -29,17 +32,17 @@ export default {
   mounted() {},
   watch: {},
   methods: {
-    dispatch(componentName, eventName, params) {
-      const parent = this.$parent || this.$root
-      const name = parent.$options.name
-      while (parent && (!name || name !== componentName)) {
-        parent = parent.$parent
-        if (parent) {
-          name = parent.$options.name
-        }
-      }
-      parent && parent.$emit.call(parent, eventName, params)
-    },
+    // dispatch(componentName, eventName, params) {
+    //   const parent = this.$parent || this.$root
+    //   const name = parent.$options.name
+    //   while (parent && (!name || name !== componentName)) {
+    //     parent = parent.$parent
+    //     if (parent) {
+    //       name = parent.$options.name
+    //     }
+    //   }
+    //   parent && parent.$emit.call(parent, eventName, params)
+    // },
     handleInput(e) {
       this.$emit('input', e.target.value)
       // this.$emit('update:value', e.target.value)

@@ -9,9 +9,9 @@ import Vue from 'vue'
 
 // plugin.install = Vue => {
 //   //
-//   const NoticeConstrutor = Vue.extend(Notice)
+//   const NoticeConstructor = Vue.extend(Notice)
 
-//   NoticeConstrutor.prototype.close = function() {
+//   NoticeConstructor.prototype.close = function() {
 //     this.isShow = false
 //     // this.$el.addEventListener('transitionend', removeDom)
 //   }

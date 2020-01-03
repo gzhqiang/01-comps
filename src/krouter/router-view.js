@@ -17,7 +17,9 @@ export default {
     })
     console.log(this.$router.route.current, this.$router.routerMap) */
     const { routerMap, current } = this.$router
+    console.log(routerMap, current)
     const component = routerMap[current].component || null
+    console.log(component, 'component')
     return h(component)
   }
 }

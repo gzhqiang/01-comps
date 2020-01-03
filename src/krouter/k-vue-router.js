@@ -12,7 +12,7 @@ class KVueRouter {
     // }
     // Vue.set(this.route, 'current', '/')
     Vue.util.defineReactive(this, 'current', '/')
-    console.dir(this)
+    // console.dir(this)
     // this.route = Vue.observable({ current: '/' })
 
     // 监控url的变化

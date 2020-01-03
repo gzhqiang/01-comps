@@ -17,7 +17,7 @@ import Vue from 'vue'
 //   }
 
 //   Vue.prototype.$create = (options = {}) => {
-//     const notice = new NoticeConstrutor()
+//     const notice = new NoticeConstructor()
 //     notice.$mount(document.createElement('div'))
 //     document.body.appendChild(notice.$el)
 //     console.log('options', options)
@@ -34,9 +34,9 @@ import Vue from 'vue'
 // }
 
 function create(Component, options) {
-  const ComponentConstrutor = Vue.extend(Component)
-  const comp = new ComponentConstrutor({
-    propsData: { ...options }
+  const ComponentConstructor = Vue.extend(Component)
+  const comp = new ComponentConstructor({
+    propsData: options
   })
   comp.$mount(document.createElement('div'))
   document.body.appendChild(comp.$el)

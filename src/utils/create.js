@@ -9,15 +9,15 @@ import Vue from 'vue'
 
 // plugin.install = Vue => {
 //   //
-//   const NoticeConstrutor = Vue.extend(Notice)
+//   const NoticeConstructor = Vue.extend(Notice)
 
-//   NoticeConstrutor.prototype.close = function() {
+//   NoticeConstructor.prototype.close = function() {
 //     this.isShow = false
 //     // this.$el.addEventListener('transitionend', removeDom)
 //   }
 
 //   Vue.prototype.$create = (options = {}) => {
-//     const notice = new NoticeConstrutor()
+//     const notice = new NoticeConstructor()
 //     notice.$mount(document.createElement('div'))
 //     document.body.appendChild(notice.$el)
 //     console.log('options', options)
@@ -36,7 +36,7 @@ import Vue from 'vue'
 function create(Component, options) {
   const ComponentConstructor = Vue.extend(Component)
   const comp = new ComponentConstructor({
-    propsData: { ...options }
+    propsData: options
   })
   comp.$mount(document.createElement('div'))
   document.body.appendChild(comp.$el)

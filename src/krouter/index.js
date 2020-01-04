@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from './k-vue-router'
 import Home from '../views/Home.vue'
 
-// Vue会调用install方法
+// Vue会调用install方法, 并且会把Vue构造函数传进去
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,7 +19,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })

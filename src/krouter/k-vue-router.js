@@ -28,7 +28,7 @@ class KVueRouter {
 
   onHashChanged() {
     // this.route.current = window.location.hash.slice(1)
-    this.current = window.location.hash.slice(1)
+    this.current = window.location.hash.slice(1) || '/'
     // Vue.set(this, 'current', this.current)
     // Vue.set(this.route, 'current', window.location.hash.slice(1))
   }
@@ -39,6 +39,7 @@ KVueRouter.install = function(_Vue) {
   // 保存构造函数
   Vue = _Vue
 
+  // 这里是根组件把router实例传进去了，挂载到$options属性上面
   Vue.mixin({
     beforeCreate() {
       if (this.$options.router) {

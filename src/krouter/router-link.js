@@ -8,8 +8,16 @@ export default {
   },
   render(h) {
     // console.log(this.$slots)
-    // return h('a', { attrs: { href: '#' + this.to } }, this.$slots.default)
+    console.log('render')
+    return h(
+      'a',
+      {
+        attrs: { href: '#' + this.to, name: 'link' },
+        style: { fontSize: '30px', color: 'red' }
+      },
+      this.$slots.default
+    )
     // jsx
-    return <a href={'#' + this.to}>{this.$slots.default}</a>
+    // return <a href={'#' + this.to}>{this.$slots.default}</a>
   }
 }

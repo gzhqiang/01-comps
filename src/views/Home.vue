@@ -5,10 +5,10 @@
     <p @click="$store.commit('increment')">
       counter:{{ $store.state.counter }}
     </p>
-    <p @click="$store.dispatch('increment')">
+    <!-- <p @click="$store.dispatch('increment')">
       async:{{ $store.state.counter }}
     </p>
-    <!-- <p>double counter: {{ $store.getters.doubleCounter }}</p> -->
+    <p>double counter: {{ $store.getters.doubleCounter }}</p> -->
   </div>
 </template>
 
@@ -20,6 +20,9 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  created() {
+    // this.$store.state = {}
   }
 }
 </script>

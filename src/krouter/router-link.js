@@ -8,7 +8,6 @@ export default {
   },
   render(h) {
     // console.log(this.$slots)
-    console.log('render')
     return h(
       'a',
       {

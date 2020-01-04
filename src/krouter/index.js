@@ -14,7 +14,13 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import('../views/About.vue')
+    component: () => import('../views/About.vue'),
+    children: [
+      {
+        path: '/about/user',
+        component: () => import('../views/User.vue')
+      }
+    ]
   }
 ]
 

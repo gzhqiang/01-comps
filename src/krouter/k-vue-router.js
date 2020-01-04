@@ -11,26 +11,60 @@ class KVueRouter {
     //   current: '/'
     // }
     // Vue.set(this.route, 'current', '/')
-    Vue.util.defineReactive(this, 'current', '/')
+    // Vue.util.defineReactive(this, 'current', '/')
     // console.dir(this)
     // this.route = Vue.observable({ current: '/' })
+    this.current = window.location.hash.slice(1) || '/'
+    Vue.util.defineReactive(this, 'matched', [])
+    this.match()
 
     // 监控url的变化
     window.addEventListener('hashchange', this.onHashChanged.bind(this))
 
     window.addEventListener('load', this.onHashChanged.bind(this))
 
-    this.routerMap = {}
-    this.$options.routes.forEach(route => {
-      this.routerMap[route.path] = route
-    })
+    // this.routerMap = {}
+    // this.$options.routes.forEach(route => {
+    //   this.routerMap[route.path] = route
+    // })
   }
 
   onHashChanged() {
     // this.route.current = window.location.hash.slice(1)
     this.current = window.location.hash.slice(1) || '/'
+    this.matched = []
+    this.match()
     // Vue.set(this, 'current', this.current)
     // Vue.set(this.route, 'current', window.location.hash.slice(1))
+  }
+
+  match(routes) {
+    routes = routes || this.$options.routes
+    // 递归遍历路由表
+    // routes.forEach(route => {
+    //   if(route.path === '/' && this.current === '/') {
+    //     this.matched.push(route)
+    //   }
+    // })
+    for (let i = 0; i < routes.length; i++) {
+      if (routes[i].path === '/' && this.current === '/') {
+        this.matched.push(routes[i])
+        return
+      }
+      if (
+        routes[i].path !== '/' &&
+        routes[i].path.indexOf(this.current) !== -1
+      ) {
+        this.matched.push(routes[i])
+        if (routes[i].children) {
+          // for (child of routes[i].children) {
+          //   this.match(child)
+          // }
+          this.match(routes[i].children)
+        }
+        return
+      }
+    }
   }
 }
 

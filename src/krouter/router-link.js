@@ -12,7 +12,13 @@ export default {
       'a',
       {
         attrs: { href: '#' + this.to, name: 'link' },
-        style: { fontSize: '30px', color: 'red' }
+        style: { fontSize: '30px', color: 'red' },
+        // domProps: {
+        //   innerHTML: 'foobar'
+        // }
+        props: {
+          myProp: 'bar'
+        }
       },
       this.$slots.default
     )

@@ -51,9 +51,11 @@ class KVueRouter {
         this.matched.push(routes[i])
         return
       }
+      // /about/user
       if (
         routes[i].path !== '/' &&
-        routes[i].path.indexOf(this.current) !== -1
+        // routes[i].path.indexOf(this.current) !== -1
+        this.current.indexOf(routes[i].path) !== -1
       ) {
         this.matched.push(routes[i])
         if (routes[i].children) {

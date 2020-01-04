@@ -34,8 +34,8 @@ import Vue from 'vue'
 // }
 
 function create(Component, options) {
-  const ComponentConstrutor = Vue.extend(Component)
-  const comp = new ComponentConstrutor({
+  const ComponentConstructor = Vue.extend(Component)
+  const comp = new ComponentConstructor({
     propsData: { ...options }
   })
   comp.$mount(document.createElement('div'))

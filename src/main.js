@@ -4,11 +4,11 @@ import router from './router'
 import store from './store'
 // import Create from './utils/create'
 // import create from './utils/create'
-import Notive from './components/notice'
+import Notice from './components/notice'
 
 Vue.config.productionTip = false
 // Vue.prototype.$create = create
-Vue.use(Notive)
+Vue.use(Notice)
 
 new Vue({
   router,

@@ -19,7 +19,8 @@ class KVueRouter {
     this.match()
 
     // 监控url的变化
-    window.addEventListener('hashchange', this.onHashChanged.bind(this))
+    // window.addEventListener('onhashchange', this.onHashChanged.bind(this))
+    window.addEventListener('popstate', this.onHashChanged.bind(this))
 
     window.addEventListener('load', this.onHashChanged.bind(this))
 
@@ -31,7 +32,9 @@ class KVueRouter {
 
   onHashChanged() {
     // this.route.current = window.location.hash.slice(1)
-    this.current = window.location.hash.slice(1) || '/'
+    // this.current = window.location.hash.slice(1) || '/'
+    this.current = location.pathname || '/'
+    console.log('this.current', this.current)
     this.matched = []
     this.match()
     // Vue.set(this, 'current', this.current)
@@ -40,12 +43,6 @@ class KVueRouter {
 
   match(routes) {
     routes = routes || this.$options.routes
-    // 递归遍历路由表
-    // routes.forEach(route => {
-    //   if(route.path === '/' && this.current === '/') {
-    //     this.matched.push(route)
-    //   }
-    // })
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].path === '/' && this.current === '/') {
         this.matched.push(routes[i])
@@ -54,14 +51,11 @@ class KVueRouter {
       // /about/user
       if (
         routes[i].path !== '/' &&
-        // routes[i].path.indexOf(this.current) !== -1
-        this.current.indexOf(routes[i].path) !== -1
+        // this.current.indexOf(routes[i].path) !== -1
+        this.current.includes(routes[i].path)
       ) {
         this.matched.push(routes[i])
         if (routes[i].children) {
-          // for (child of routes[i].children) {
-          //   this.match(child)
-          // }
           this.match(routes[i].children)
         }
         return

@@ -11,7 +11,7 @@ export default {
     return h(
       'a',
       {
-        attrs: { href: '#' + this.to, name: 'link' },
+        attrs: { href: this.to, name: 'link' },
         style: { fontSize: '30px', color: 'red' },
         // domProps: {
         //   innerHTML: 'foobar'
